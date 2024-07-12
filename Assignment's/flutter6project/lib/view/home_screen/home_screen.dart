@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutterproject6/view/home_screen/widget/home_random_text.dart';
+import 'package:flutter6project/dataProvider/box_data_provider.dart';
+import 'package:flutter6project/dataProvider/task_data_provider.dart';
+import 'package:flutter6project/models/box_model.dart';
+import 'package:flutter6project/view/home_screen/widget/priority_task_box.dart';
+import 'package:flutter6project/view/home_screen/widget/task_category_list.dart';
+import 'package:flutter6project/view/home_screen/widget/task_list.dart';
+import 'widget/home_random_text.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -9,28 +15,84 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  List<BoxMoldes> datalist = [
+    BoxDataProvider.boxlist[0],
+    BoxDataProvider.boxlist[1]
+  ];
+
+  
+
   @override
   Widget build(BuildContext context) {
+    // if (TaskDataProvider.taskDataList.length == TaskDataProvider.taskDataList.length) {
+    //   setState(() {
+    //     TaskList();
+    //   });
+    // }
     return Scaffold(
-      body: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      backgroundColor: Color(0xff6b79c0),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 25.0, vertical: 50),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Column(
+              ListTile(
+                title: HomeRandomText(size: 30, data: 'Welcom to Notes'),
+                subtitle: HomeRandomText(size: 22, data: 'Have a grate Day'),
+                trailing: const CircleAvatar(
+                  radius: 20,
+                  backgroundImage:
+                      AssetImage('assets/images/homeScreen/profilemage.png'),
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              HomeRandomText(size: 22, data: 'My Priority Task'),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  PriorityTaskBox(
+                      boxpic: datalist[0].boxpix,
+                      hours: datalist[0].hours,
+                      title1: datalist[0].title1,
+                      title2: datalist[0].title2,
+                      subtitle1: datalist[0].subtitle1,
+                      subtitle2: datalist[0].subtitle2),
+                  PriorityTaskBox(
+                      boxpic: datalist[1].boxpix,
+                      hours: datalist[1].hours,
+                      title1: datalist[1].title1,
+                      title2: datalist[1].title2,
+                      subtitle1: datalist[1].subtitle1,
+                      subtitle2: datalist[1].subtitle2),
+                ],
+              ),
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('Welcome to Notes',style: TextStyle(color: Colors.black,fontSize: 40,fontWeight: FontWeight.bold),),
-                  HomeRandomText(size: 27, data: 'Have a grate Day', shade: Colors.black),
-                  ],
-              ),
-              CircleAvatar(
-                backgroundImage: AssetImage('assats/images/homescreen/profilepic.jpg'),
-              )
+                Text('My Tasks',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 25,
+                ),),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(context, '/addScreen');
+                  },
+                  child: CircleAvatar(
+                    backgroundImage: AssetImage('assets/images/homeScreen/Addimage.png'),
+                    radius: 22,
+                  ),
+                ),
+              ],),
+          
+              const TaskCategoryList(),
+                TaskList(),
             ],
           ),
-          HomeRandomText(size: 35, data: 'My Priority Task', shade: Colors.black)
-        ],
+        ),
       ),
     );
   }
