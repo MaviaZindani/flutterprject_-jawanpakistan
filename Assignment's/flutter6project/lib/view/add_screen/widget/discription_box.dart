@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 
 class DiscriptionBox extends StatefulWidget {
-   DiscriptionBox({super.key});
+  DiscriptionBox({super.key});
 
   @override
   State<DiscriptionBox> createState() => _DiscriptionBoxState();
   TextEditingController discription = TextEditingController();
-
 }
 
 class _DiscriptionBoxState extends State<DiscriptionBox> {
@@ -21,28 +20,27 @@ class _DiscriptionBoxState extends State<DiscriptionBox> {
             'Discription:',
             style: TextStyle(
               fontSize: 22,
-            ),),
+            ),
+          ),
           Container(
-                      height: 120,
-                      width: double.maxFinite,
-                      alignment: Alignment.center,
-                      decoration: const BoxDecoration(
-                        color: Colors.white,
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 12.0,right: 12),
-                        child: Align(
-                          alignment: Alignment.topLeft,
-                          child: TextField(
-                            decoration: const InputDecoration(
-                              border: InputBorder.none,
-                              hintText: 'Add Discription...'
-                            ),
-                            controller: widget.discription,
-                          ),
-                        ),
-                      ),
-                    ),
+            height: 120,
+            width: double.maxFinite,
+            alignment: Alignment.center,
+            decoration: const BoxDecoration(
+              color: Colors.white,
+            ),
+            child: Padding(
+              padding: const EdgeInsets.only(left: 12.0, right: 12),
+              child: Align(
+                alignment: Alignment.topLeft,
+                child: TextField(
+                  decoration: const InputDecoration(
+                      border: InputBorder.none, hintText: 'Add Discription...'),
+                  controller: widget.discription,
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );

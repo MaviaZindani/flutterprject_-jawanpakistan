@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter6project/controller/task_fuction.dart';
 import 'package:flutter6project/dataProvider/task_data_provider.dart';
 import 'package:provider/provider.dart';
 
 class TaskList extends StatefulWidget {
-   TaskList({super.key});
+  const TaskList({super.key});
 
   @override
   State<TaskList> createState() => _TaskListState();
@@ -12,52 +13,60 @@ class TaskList extends StatefulWidget {
 class _TaskListState extends State<TaskList> {
   @override
   Widget build(BuildContext context) {
-  final taskDataList = Provider.of<TaskDataProvider>(context).taskDataList;
-   bool done = true; 
-    return SizedBox(
-      height: double.maxFinite,
-      width: double.maxFinite,
-      child: ListView.builder(
-        // itemCount: TaskDataProvider.taskDataList.length,
-        itemBuilder: (context,index){
-          return Padding(
-            padding: const EdgeInsets.only(bottom: 10.0),
-            child: Card(
-              color: Colors.white,
-              child: ListTile(
-                title: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Text(TaskDataProvider().taskDataList[index].title),
-                    Container(
-                      height: 10,
-                      width: 20,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                       color: done == false?
-                        TaskDataProvider().taskDataList[index].doneornot.color:
-                        TaskDataProvider().taskDataList[index].doneornot.color,
-                      
-                      ),
-                      child: Text(TaskDataProvider().taskDataList[index].doneornot.done),
-              
+    final taskDataList = Provider.of<TaskFuction>(context, listen: false);
+    bool taskDone = true;
+    return Consumer<TaskFuction>(
+      builder: (context, value, child) {
+        return SizedBox(
+          child: ListView.builder(
+              shrinkWrap: true,
+              // physics: const NeverScrollableScrollPhysics(),
+              itemCount: value.list.length,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 10.0),
+                  child: Card(
+                    color: Colors.white,
+                    child: Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(value.list[index].title),
+                                Row(
+                                  children: [
+                                    const Icon(Icons.calendar_month_outlined),
+                                    const SizedBox(
+                                      width: 20,
+                                    ),
+                                    Text(value.list[index].date),
+                                    const SizedBox(
+                                      width: 20,
+                                    ),
+                                    taskDone == false
+                                        ? SizedBox(
+                                            height: 12,
+                                            width: 12,
+                                            child: Image.asset(
+                                              value.list[index].doneornot.done,
+                                            ))
+                                        : Image.asset(
+                                            'assets/images/homeScreen/notDoneFlage.png')
+                                  ],
+                                ),
+                              ],
+                            ),
+                            const Icon(Icons.menu),
+                          ]),
                     ),
-                  ],),
-                  subtitle:  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                     const Icon(Icons.calendar_month_outlined),
-                      Text(TaskDataProvider().taskDataList[index].date),
-                      // done == false?
-                      // Image.asset(TaskDataProvider.taskDataList[index].doneornot.done):
-                      // Image.asset('assets/images/homeScreen/doneFlaeg.jpg')
-                    ],
                   ),
-                trailing: const Icon(Icons.menu),
-              ),
-            ),
-          );
-        }),
+                );
+              }),
+        );
+      },
     );
   }
 }

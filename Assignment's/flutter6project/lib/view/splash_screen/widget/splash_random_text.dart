@@ -4,8 +4,12 @@ class RandomText extends StatelessWidget {
   final double size;
   final String data;
   final Color shade;
-  const RandomText(
-      {super.key, required this.size, required this.data, required this.shade,});
+  const RandomText({
+    super.key,
+    required this.size,
+    required this.data,
+    required this.shade,
+  });
 
   @override
   Widget build(BuildContext context) {

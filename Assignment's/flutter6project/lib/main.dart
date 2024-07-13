@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter6project/controller/task_fuction.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter6project/dataProvider/task_data_provider.dart';
 import 'package:flutter6project/view/add_screen/add_screen.dart';
@@ -11,9 +12,10 @@ void main() {
   runApp(
     MultiProvider(
       providers: [
+        ChangeNotifierProvider(create: (_) => TaskFuction()),
         ChangeNotifierProvider(create: (_) => TaskDataProvider()),
       ],
-      child: MyApp(),
+      child: const MyApp(),
     ),
   );
 }
@@ -34,10 +36,8 @@ class MyApp extends StatelessWidget {
       routes: {
         RoutesNames.splashScreen: (context) => const MySplashScreen(),
         RoutesNames.homeScreen: (context) => const HomeScreen(),
-        RoutesNames.addScreen: (context) => const AddScreen(),
+        RoutesNames.addScreen: (context) => AddScreen(),
       },
     );
   }
 }
-
-

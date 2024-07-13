@@ -1,5 +1,5 @@
-
 import 'package:flutter/material.dart';
+import 'package:flutter6project/view/home_screen/home_screen.dart';
 
 import 'widget/slide_box.dart';
 import 'widget/splash_random_text.dart';
@@ -31,13 +31,13 @@ class _MySplashScreenState extends State<MySplashScreen> {
                 data: 'Daily To Do',
                 shade: Colors.black,
               ),
-
-              // Padding(
-              //   padding: const EdgeInsets.symmetric(horizontal: 20.0,vertical: 10),
-              //   child: Image.asset(
-              //     'assets/images/splashScreenImages/Illustration.png',
-              //   ),
-              // ),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
+                child: Image.asset(
+                  'assets/images/splashScreenImages/Illustration.png',
+                ),
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: const [
@@ -65,8 +65,9 @@ class _MySplashScreenState extends State<MySplashScreen> {
                   elevation: 2,
                 ),
                 onPressed: () {
-                  
-                  Navigator.pushNamed(context, '/homescreen');
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => HomeScreen()));
+                  // Navigator.pushNamed(context, '/homescreen');
                 },
                 child: const Text(
                   'Getting Start',

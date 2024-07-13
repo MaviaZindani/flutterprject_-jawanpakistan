@@ -5,16 +5,15 @@ class SlideBox extends StatefulWidget {
 
   @override
   State<SlideBox> createState() => _SlideBoxState();
-  
 }
 
 class _SlideBoxState extends State<SlideBox> {
-     bool changeColor = false;
+  bool changeColor = false;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
+      onTap: () {
         setState(() {
           changeColor = !changeColor;
         });
@@ -22,11 +21,13 @@ class _SlideBoxState extends State<SlideBox> {
       child: Container(
         height: 22,
         width: 55,
-        margin: EdgeInsets.symmetric(vertical: 12,),
+        margin: EdgeInsets.symmetric(
+          vertical: 12,
+        ),
         decoration: BoxDecoration(
-          color: changeColor == false?
-          const Color(0xffFCD873):
-          const Color(0xffFFC727),
+          color: changeColor == false
+              ? const Color(0xffFCD873)
+              : const Color(0xffFFC727),
           borderRadius: BorderRadius.circular(15),
         ),
       ),
