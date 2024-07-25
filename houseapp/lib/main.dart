@@ -1,23 +1,27 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:houseapp/controller/house_fuctions.dart';
+import 'package:houseapp/dataprovider/house_data_provider.dart';
+import 'package:houseapp/firebase_options.dart';
 import 'package:houseapp/utils/routes.dart';
-// import 'package:firebase_core/firebase_core.dart';
 import 'package:houseapp/view/home_screen/home_screen.dart';
 import 'package:houseapp/view/login_signup_screen/login_signup_screen.dart';
 import 'package:provider/provider.dart';
 
-void main() {
-  MultiProvider(
-    providers: [],
-    child: const MyApp(),
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  runApp(
+     MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => HouseFuctions()),
+        ChangeNotifierProvider(create: (_) => HouseDataProvider()),
+      ],
+      child: const MyApp(),
+    ),
   );
+  
 }
-// async {
-// WidgetsFlutterBinding.ensureInitialized();
-// await Firebase.initializeApp(
-//   options: DefaultFirebaseOptions.currentPlatform,
-// );
-// }
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 

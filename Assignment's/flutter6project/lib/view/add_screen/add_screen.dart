@@ -1,9 +1,6 @@
-// import 'dart:js_interop';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter6project/controller/task_fuction.dart';
-// import 'package:flutter6project/dataProvider/task_data_provider.dart';
 import 'package:flutter6project/models/done_notdone_model.dart';
 import 'package:flutter6project/models/task_categary_model.dart';
 import 'package:flutter6project/models/task_data_model.dart';
@@ -166,13 +163,14 @@ class _AddScreenState extends State<AddScreen> {
                       backgroundColor:
                           WidgetStatePropertyAll(Color(0xff254069))),
                   onPressed: () {
-                    value.addTask(TaskDataModel(
+                    if(widget.title.text.isNotEmpty){
+                      value.addTask(TaskDataModel(
                         widget.title.text,
                         fromTime.format(context),
                         DoneNotdoneModel(Colors.green, ''),
                         TaskCategaryModel.todaysTask));
-                    print(TitleBox(title: widget.title));
-                    Navigator.pop(context);
+                    }
+                        Navigator.pop(context);
                   },
                   child: const SizedBox(
                       height: 40,

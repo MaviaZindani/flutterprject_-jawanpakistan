@@ -8,7 +8,6 @@ class TaskCategoryList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final taskDataList = Provider.of<TaskFuction>(context, listen: false);
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 25.0),
       child: SizedBox(

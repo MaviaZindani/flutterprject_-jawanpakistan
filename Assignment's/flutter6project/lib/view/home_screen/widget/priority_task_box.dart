@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter6project/dataProvider/box_data_provider.dart';
-import 'package:flutter6project/models/box_model.dart';
 import 'package:flutter6project/view/home_screen/widget/home_random_text.dart';
 
 class PriorityTaskBox extends StatefulWidget {

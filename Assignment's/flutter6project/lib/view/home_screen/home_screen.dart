@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter6project/dataProvider/box_data_provider.dart';
-import 'package:flutter6project/dataProvider/task_data_provider.dart';
 import 'package:flutter6project/models/box_model.dart';
 import 'package:flutter6project/view/home_screen/widget/priority_task_box.dart';
-import 'package:flutter6project/view/home_screen/widget/task_category_list.dart';
 import 'package:flutter6project/view/home_screen/widget/task_list.dart';
 import 'widget/home_random_text.dart';
 

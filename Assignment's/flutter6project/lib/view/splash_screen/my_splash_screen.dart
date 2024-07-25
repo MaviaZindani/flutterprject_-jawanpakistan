@@ -14,6 +14,11 @@ class MySplashScreen extends StatefulWidget {
 class _MySplashScreenState extends State<MySplashScreen> {
   @override
   Widget build(BuildContext context) {
+    List<String> slideImages = [
+      'assets/RRimages/splashScreenImages/Illustration.png',
+      'assets/images/splashScreenImages/Illustration.png',
+      'assets/images/splashScreenImages/Illustration.png',
+    ];
     return SafeArea(
       child: Scaffold(
         backgroundColor: const Color(0xff6b79c0),
@@ -34,9 +39,18 @@ class _MySplashScreenState extends State<MySplashScreen> {
               Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
-                child: Image.asset(
-                  'assets/images/splashScreenImages/Illustration.png',
-                ),
+                child: SizedBox(
+                  height: 200,
+                  width: 200,
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    scrollDirection: Axis.horizontal,
+                    itemCount: slideImages.length,
+                    itemBuilder: (context,index){
+                      Image.asset(slideImages[index],height: 200,width: 200,);
+                    },
+                    ),
+                )
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,

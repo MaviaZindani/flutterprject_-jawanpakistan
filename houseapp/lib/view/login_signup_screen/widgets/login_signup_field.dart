@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:houseapp/compontent.dart';
 
 class LoginSignupField extends StatelessWidget {
-  const LoginSignupField({super.key,required this.textController, required this.textHint, required this.icon, required this.inputTextType});
+  const LoginSignupField({super.key,required this.textController, required this.textHint, required this.inputTextType, required this.prefixIcon});
   final TextEditingController textController;
+  final Widget prefixIcon;
   final String textHint;
-  final Icon icon;
   final TextInputType inputTextType;
   
 
@@ -15,7 +15,7 @@ class LoginSignupField extends StatelessWidget {
       controller: textController,
       keyboardType: inputTextType,
       decoration: InputDecoration(
-        icon: icon,
+        prefixIcon: prefixIcon,
         hintText: textHint,
         fillColor: homeGrayWhite,
         border: OutlineInputBorder(

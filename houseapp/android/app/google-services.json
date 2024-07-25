@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1051625822157:android:298fa65915d5c022fe1684",
+        "mobilesdk_app_id": "1:1051625822157:android:9ef2a8d572cd9846fe1684",
         "android_client_info": {
-          "package_name": "com.example.houseapp"
+          "package_name": "com.house"
         }
       },
       "oauth_client": [],

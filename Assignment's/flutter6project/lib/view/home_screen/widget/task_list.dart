@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter6project/controller/task_fuction.dart';
-import 'package:flutter6project/dataProvider/task_data_provider.dart';
 import 'package:provider/provider.dart';
 
 class TaskList extends StatefulWidget {
@@ -13,7 +12,6 @@ class TaskList extends StatefulWidget {
 class _TaskListState extends State<TaskList> {
   @override
   Widget build(BuildContext context) {
-    final taskDataList = Provider.of<TaskFuction>(context, listen: false);
     bool taskDone = true;
     return Consumer<TaskFuction>(
       builder: (context, value, child) {
